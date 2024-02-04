@@ -50,7 +50,7 @@ in
     meta = with lib; {
       mainProgram = "pridewie";
       description = "funni bot forked from teawie by getchoo";
-      homepage = "https://github.com/Pridecraft-Studios/Pridewie;
+      homepage = "https://github.com/Pridecraft-Studios/Pridewie";
       license = licenses.mit;
       platforms = with platforms; linux ++ darwin;
       maintainers = with maintainers; [Pridecraft Studios];
