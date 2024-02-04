@@ -53,6 +53,6 @@ in
       homepage = "https://github.com/Pridecraft-Studios/Pridewie";
       license = licenses.mit;
       platforms = with platforms; linux ++ darwin;
-      maintainers = with maintainers; [Pridecraft Studios];
+      maintainers = with maintainers; [];
     };
   }
