@@ -10,7 +10,7 @@
     ...
   }: {
     packages = {
-      teawiebot = pkgs.callPackage ./derivation.nix {
+      pridewie = pkgs.callPackage ./derivation.nix {
         inherit self;
         inherit
           (pkgs.darwin.apple_sdk.frameworks)
@@ -22,7 +22,7 @@
         naersk = inputs.naersk.lib.${system};
       };
 
-      default = self'.packages.teawiebot;
+      default = self'.packages.pridewie;
     };
   };
 }

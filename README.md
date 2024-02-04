@@ -1,9 +1,12 @@
-# teawie bot 🦀🦀🦀
+# pridewie bot 🦀🦀🦀 🏳️‍🌈🏳️‍🌈🏳️‍🌈
 
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2Fgetchoo%2FteawieBot)](https://garnix.io)
 
-okay so like basically, it's just a discord bot named "teawie" (so cool!!
-and now in rust!!!)🚀🚀
+okay so like basically, it's just a discord bot named "pridewie" (so cool so proud!!
+and in rust!!!)🚀🚀
+
+Credits to the original maintainer 
+[Getchoo](https://github.com/getchoo)
 
 ## features / commands
 

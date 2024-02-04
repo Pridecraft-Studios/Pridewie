@@ -51,7 +51,7 @@
         rustc = toolchain;
       };
 
-      teawiebot = config.packages.teawiebot.override {
+      pridewie = config.packages.pridewie.override {
         naersk = naersk';
         optimizeSize = true;
       };
@@ -59,7 +59,7 @@
       inherit (crossPkgsFor.${arch}.stdenv) cc;
     in
       lib.getExe (
-        teawiebot.overrideAttrs (_:
+        pridewie.overrideAttrs (_:
           lib.fix (finalAttrs: {
             CARGO_BUILD_TARGET = target;
             "CC_${target'}" = "${cc}/bin/${cc.targetPrefix}cc";
@@ -70,7 +70,7 @@
 
     containerFor = arch:
       pkgs.dockerTools.buildLayeredImage {
-        name = "teawiebot";
+        name = "pridewie";
         tag = "latest-${arch}";
         contents = [pkgs.dockerTools.caCertificates];
         config.Cmd = [(wieFor arch)];

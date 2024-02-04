@@ -4,8 +4,8 @@ self: {
   pkgs,
   ...
 }: let
-  cfg = config.services.teawiebot;
-  defaultUser = "teawiebot";
+  cfg = config.services.pridewie;
+  defaultUser = "pridewie";
 
   inherit
     (lib)
@@ -20,9 +20,9 @@ self: {
     types
     ;
 in {
-  options.services.teawiebot = {
-    enable = mkEnableOption "teawiebot";
-    package = mkPackageOption self.packages.${pkgs.stdenv.hostPlatform.system} "teawiebot" {};
+  options.services.pridewie = {
+    enable = mkEnableOption "pridewie";
+    package = mkPackageOption self.packages.${pkgs.stdenv.hostPlatform.system} "pridewie" {};
 
     user = mkOption {
       description = mdDoc ''
@@ -70,24 +70,24 @@ in {
       type = types.nullOr types.path;
       default = null;
       example = literalExpression ''
-        "/run/agenix.d/1/teawieBot"
+        "/run/agenix.d/1/pridewie"
       '';
     };
   };
 
   config = mkIf cfg.enable {
-    services.redis.servers.teawiebot = mkIf (cfg.redisUrl == "local") {
+    services.redis.servers.pridewie = mkIf (cfg.redisUrl == "local") {
       enable = true;
       inherit (cfg) user;
       port = 0; # disable tcp listener
     };
 
-    systemd.services."teawiebot" = {
+    systemd.services."pridewie" = {
       enable = true;
       wantedBy = ["multi-user.target"];
       after =
         ["network.target"]
-        ++ optionals (cfg.redisUrl == "local") ["redis-teawiebot.service"];
+        ++ optionals (cfg.redisUrl == "local") ["redis-pridewie.service"];
 
       script = ''
         ${getExe cfg.package}
@@ -96,7 +96,7 @@ in {
       environment = {
         REDIS_URL =
           if cfg.redisUrl == "local"
-          then "unix:${config.services.redis.servers.teawiebot.unixSocket}"
+          then "unix:${config.services.redis.servers.pridewie.unixSocket}"
           else cfg.redisUrl;
       };
 

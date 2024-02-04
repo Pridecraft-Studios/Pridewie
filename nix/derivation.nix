@@ -30,7 +30,7 @@
     };
 in
   naersk.buildPackage {
-    pname = "teawiebot";
+    pname = "pridewie";
     version = builtins.substring 0 8 self.lastModifiedDate or "dirty";
 
     src = filterSource ../.;
@@ -48,11 +48,11 @@ in
       + lib.optionalString optimizeSize " -C codegen-units=1 -C strip=symbols -C opt-level=z";
 
     meta = with lib; {
-      mainProgram = "teawiebot";
-      description = "funni bot";
-      homepage = "https://github.com/getchoo/teawiebot";
+      mainProgram = "pridewie";
+      description = "funni bot forked from teawie by getchoo";
+      homepage = "https://github.com/Pridecraft-Studios/Pridewie;
       license = licenses.mit;
       platforms = with platforms; linux ++ darwin;
-      maintainers = with maintainers; [getchoo];
+      maintainers = with maintainers; [Pridecraft Studios];
     };
   }
