@@ -55,7 +55,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      USERNAME: getchoo
+      USERNAME: ${{ github.actor }}
 
     steps:
       - name: Set image name
