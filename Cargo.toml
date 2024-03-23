@@ -1,8 +1,8 @@
 [package]
-name = "teawiebot"
+name = "pridewie"
 version = "1.0.0"
 edition = "2021"
-repository = "https://github.com/getchoo/teawieBot"
+repository = "https://github.com/Pridecraft-Studios/Pridewie"
 license = "MIT"
 readme = "README.md"
 build = "build.rs"

@@ -1,16 +1,67 @@
-name: Clippy
+name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
+  build:
+    name: Build
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v10
+
+      - name: Setup Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v4
+
+      - name: Run build
+        run: |
+          nix build --fallback --print-build-logs
+
+  check:
+    name: Check flake
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v10
+
+      - name: Setup Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v4
+
+      - name: Run build
+        run: |
+          nix flake check --fallback --print-build-logs
+
   clippy:
     name: Run Clippy scan
+
     runs-on: ubuntu-latest
 
     permissions:
+      contents: read
       security-events: write
 
     steps:

@@ -6,7 +6,7 @@ pub mod shiggy;
 pub static USER_AGENT: Lazy<String> = Lazy::new(|| {
 	let version = option_env!("CARGO_PKG_VERSION").unwrap_or("development");
 
-	format!("teawieBot/{version}")
+	format!("pridewie/{version}")
 });
 
 pub static REQWEST_CLIENT: Lazy<reqwest::Client> = Lazy::new(|| {

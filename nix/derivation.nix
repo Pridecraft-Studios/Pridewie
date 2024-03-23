@@ -8,7 +8,7 @@
   optimizeSize ? false,
 }:
 rustPlatform.buildRustPackage {
-  pname = "teawiebot";
+  pname = "pridewie";
   version =
     (lib.importTOML ../Cargo.toml).package.version
     + "-${self.shortRev or self.dirtyShortRev or "unknown-dirty"}";
@@ -59,10 +59,9 @@ rustPlatform.buildRustPackage {
   };
 
   meta = with lib; {
-    mainProgram = "teawiebot";
+    mainProgram = "pridewie";
     description = "funni bot";
-    homepage = "https://github.com/getchoo/teawiebot";
+    homepage = "https://github.com/Pridecraft-Studios/Pridewie";
     license = licenses.mit;
-    maintainers = with maintainers; [getchoo];
   };
 }

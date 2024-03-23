@@ -33,18 +33,17 @@
       targets;
 
     buildTeawieWith = rustPlatform:
-      self'.packages.teawiebot.override {
+      self'.packages.pridewie.override {
         inherit rustPlatform;
         lto = true;
         optimizeSize = true;
       };
   in {
-    packages = lib.optionalAttrs pkgs.stdenv.isLinux (
+    packages =
       lib.mapAttrs' (
         target: rustPlatform:
-          lib.nameValuePair "teawiebot-static-${target}" (buildTeawieWith rustPlatform)
+          lib.nameValuePair "pridewie-static-${target}" (buildTeawieWith rustPlatform)
       )
-      rustPlatforms
-    );
+      rustPlatforms;
   };
 }

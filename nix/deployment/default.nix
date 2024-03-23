@@ -17,11 +17,11 @@
   }: let
     containerFor = arch:
       pkgs.dockerTools.buildLayeredImage {
-        name = "teawiebot";
+        name = "pridewie";
         tag = "latest-${arch}";
         contents = [pkgs.dockerTools.caCertificates];
         config.Cmd = [
-          (lib.getExe self'.packages."teawiebot-static-${arch}")
+          (lib.getExe self'.packages."pridewie-static-${arch}")
         ];
 
         architecture = withSystem "${arch}-linux" ({pkgs, ...}: pkgs.pkgsStatic.go.GOARCH);
